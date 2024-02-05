@@ -17,7 +17,7 @@ theme:
 extra:
   generator: false
   social:
-    - icon: fontawesome/brands/github-alt
+    - icon: fontawesome/brands/github
       link: https://github.com/ashleycaselli/shacl-x
 copyright: |
   &copy; 2024 <a target="_blank" rel="noopener" href="https://ashleycaselli.github.io/">Ashley Caselli</a>
