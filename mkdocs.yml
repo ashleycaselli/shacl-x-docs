@@ -1,0 +1,10 @@
+site_name: SHACL-X
+theme:
+  name: material
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/ashleycaselli/shacl-x
+copyright: |
+  &copy; 2024 <a target="_blank" href="https://ashleycaselli.github.io/">Ashley Caselli</a>
