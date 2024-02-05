@@ -1,10 +1,23 @@
 site_name: SHACL-X
 theme:
   name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: teal
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: teal
+      accent: lime
 extra:
   generator: false
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/ashleycaselli/shacl-x
 copyright: |
-  &copy; 2024 <a target="_blank" href="https://ashleycaselli.github.io/">Ashley Caselli</a>
+  &copy; 2024 <a target="_blank" rel="noopener" href="https://ashleycaselli.github.io/">Ashley Caselli</a>
