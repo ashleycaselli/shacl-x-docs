@@ -118,3 +118,83 @@ ex:InvalidCountry a ex:Country ;
     ```
 
 ## Constraint Components
+
+### An Example of a X-based Constraint Component
+
+#### Example data graph
+
+``` turtle
+@prefix ex: <http://example.org/ns#> .
+
+ex:ValidCountry a ex:Country ;
+    ex:name "Italy" .
+
+ex:InvalidCountry a ex:Country ;
+    ex:name "Switzerland" .
+```
+#### Example shapes graph
+
+``` turtle
+ex:CountryExampleShape
+    a sh:NodeShape ;
+    sh:targetClass ex:Country ;
+    sh:property [
+        sh:path ex:name ;
+        ex:maxLength 5 ;
+    ] .
+
+ex:MaxLengthConstraintComponent
+    a sh:ConstraintComponent ;
+	sh:parameter [
+		sh:path ex:maxLength ;
+		sh:datatype xsd:integer ;
+	] ;
+	sh:validator ex:hasMaxLength .
+```
+
+=== "JavaScript"
+    ``` turtle
+    ex:hasMaxLength
+        a sh:JSValidator ;
+        sh:message "Value has more than {$maxLength} characters" ;
+        sh:jsLibrary [ sh:jsLibraryURL "http://example.org/js/hasMaxLength.js"^^xsd:anyURI ] ;
+        sh:jsFunctionName "hasMaxLength" ;
+        rdfs:comment """
+            Note that $value and $maxLength are RDF nodes expressed in JavaScript Objects.
+            Their string value is accessed via the .getLex() and .getUri() methods.
+            The function returns true if no violation has been found.
+            """ ; .
+    ```
+
+
+#### Example X function
+
+=== "JavaScript"
+    ``` js
+    function hasMaxLength($value, $maxLength) {
+        if ($value.isLiteral()) {
+            return $value.getLex().length <= $maxLength.getLex();
+        } else if ($value.isURI()) {
+            return $value.getUri().length <= $maxLength.getLex();
+        } else { // Blank node
+            return false;
+        }
+    }
+    ```
+
+#### Example validation results
+
+``` turtle
+[   a            sh:ValidationReport ;
+    sh:conforms  false ;
+    sh:result   [   a                               sh:ValidationResult ;
+                    sh:focusNode                    ex:InvalidCountry ;
+                    sh:resultMessage                "Value has more than 5 characters" ;
+                    sh:resultPath                   ex:name ;
+                    sh:resultSeverity               sh:Violation ;
+                    sh:sourceConstraintComponent    ex:MaxLengthConstraintComponent ;
+                    sh:sourceShape                  []  ;
+                    sh:value                        "Switzerland"
+    ]
+] .
+```
