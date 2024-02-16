@@ -163,7 +163,21 @@ ex:MaxLengthConstraintComponent
             Note that $value and $maxLength are RDF nodes expressed in JavaScript Objects.
             Their string value is accessed via the .getLex() and .getUri() methods.
             The function returns true if no violation has been found.
-            """ ; .
+            """ .
+    ```
+
+=== "Python"
+    ``` turtle
+    ex:hasMaxLength
+        a sh:PyValidator ;
+        sh:message "Value has more than {$maxLength} characters" ;
+        sh:pyLibrary [ sh:pyLibraryURL "http://example.org/js/has_max_length.py"^^xsd:anyURI ] ;
+        sh:pyFunctionName "has_max_length" ;
+        rdfs:comment """
+            Note that _value and _maxLength are RDF nodes expressed in Python Objects.
+            Their string value is accessed via the .getLex() and .getUri() attributes.
+            The function returns true if no violation has been found.
+            """ .
     ```
 
 
@@ -180,6 +194,18 @@ ex:MaxLengthConstraintComponent
             return false;
         }
     }
+    ```
+=== "Python"
+    ``` py
+    def has_max_length(_value, _maxLength):
+        if _value.isLiteral():
+            return len(_value.getLex()) <= int(_maxLength.getLex())
+        elif _value.isURI():
+            return len(_value.getUri()) <= int(_maxLength.getLex())
+        else:
+            return False
+
+
     ```
 
 #### Example validation results
