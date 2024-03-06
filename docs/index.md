@@ -9,8 +9,8 @@ Following the deprecation of the Nashorn JavaScript engine, TopBraid SHACL API d
 SHACL-X reintroduces support for the SHACL JavaScript Extensions by replacing the Nashorn engine with GraalVM and the Polyglot APIs. The codebase of SHACL-X corresponds to TopBraid SHACL API version [1.3.2](https://github.com/TopQuadrant/shacl/releases/tag/shacl-1.3.2).
 
 ## X &rarr; supported languages
-The `X` in SHACL-X can also be read as a placeholder for the languages supported by the tool. Currently, `JavaScript` and `Python` are the only supported ones. Everytime `X` is used, it can be replaced by any of the supported languages. In case some functionalities are only available for a specific language, it will be explictly stated (i.e. SHACL-JS, SHACL-Py).
+The `X` in SHACL-X can also be read as a placeholder for the languages supported by the tool. Currently, `JavaScript` and `Python` are the supported ones. In this documentation, anytime you encounter an `X` occurrence you can replace it by any of the supported languages. In case some functionalities are only available for a specific language, it will be explictly stated (i.e. SHACL-JS, SHACL-Py).
 
 ## License
 
-## Credits
+The software is released under the Apache 2.0 License.
