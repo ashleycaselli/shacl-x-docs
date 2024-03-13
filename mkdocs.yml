@@ -37,7 +37,7 @@ extra:
   generator: false
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/ashleycaselli/shacl-x
+      link: https://github.com/shacl-x/shacl-x
 
 plugins: 
   - search:
