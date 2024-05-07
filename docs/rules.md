@@ -55,7 +55,7 @@ ex:ExampleRectangle
     function computeArea($this) {
         let width = getProperty($this, "width");
         let height = getProperty($this, "height");
-        let area = TermFactory.literal(width.getLex() * height.getLex(), width.getDataype());
+        let area = TermFactory.literal(width.getLex() * height.getLex(), width.getDatatype());
         let areaProperty = TermFactory.namedNode(NS + "area");
         return [ [$this, areaProperty, area] ]; 
     }
@@ -75,7 +75,7 @@ ex:ExampleRectangle
     def compute_area(_this):
         width = get_property(_this, "width");
         height = get_property(_this, "height");
-        area = py_tf.literal(width.getLex() * height.getLex(), width.getDataype());
+        area = py_tf.literal(width.getLex() * height.getLex(), width.getDatatype());
         areaProperty = py_tf.namedNode(ns + "area");
         return [ [_this, areaProperty, area] ]; 
 
