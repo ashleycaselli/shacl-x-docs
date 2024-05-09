@@ -73,17 +73,17 @@ ex:ExampleRectangle
     ns = "http://datashapes.org/js/tests/rules/rectangle.test#";
 
     def compute_area(_this):
-        width = get_property(_this, "width");
-        height = get_property(_this, "height");
-        area = py_tf.literal(width.getLex() * height.getLex(), width.getDatatype());
-        areaProperty = py_tf.namedNode(ns + "area");
-        return [ [_this, areaProperty, area] ]; 
+        width = get_property(_this, "width")
+        height = get_property(_this, "height")
+        area = py_tf.literal(width.getLex() * height.getLex(), width.getDatatype())
+        areaProperty = py_tf.namedNode(ns + "area")
+        return [ [_this, areaProperty, area] ]
 
     def get_property(_this, name):
-        let it = _data.find(_this, py_tf.namedNode(NS + name), None);
-        let result = it.next().getObject();
-        it.close();
-        return result;
+        it = _data.find(_this, py_tf.namedNode(ns + name), None)
+        result = it.next().getObject()
+        it.close()
+        return result
     ```
 
 #### Example inferred triples
